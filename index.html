@@ -1,22 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+  <meta charset="UTF-8">
   <title>Pose ta question à GPT</title>
-</head>
-<body>
-  <h1>Pose une question</h1>
-  <input type="text" id="question" placeholder="Ta question ici">
-  <button onclick="ask()">Envoyer</button>
-  <pre id="response"></pre>
-
-  <script>
-    async function ask() {
-      const question = document.getElementById("question").value;
-      const url = "https://fmanat.app.n8n.cloud/webhook-test/1a0d539b-ce81-4f8c-bc54-112eeba3f77a?question=" + encodeURIComponent(question);
-      const res = await fetch(url);
-      const data = await res.json();
-      document.getElementById("response").textContent = data.reply || JSON.stringify(data);
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      max-width: 600px;
+      margin: auto;
+      background-color: #f9f9f9;
     }
-  </script>
-</body>
-</html>
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+      cursor: pointer;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+    #response {
+      margin-top: 30px;
+      background: #fff;
+      padding: 20px;
+      border-left: 4px solid #007acc;
+      font-size: 18px;
+      white-space: pre-wrap;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 4px
