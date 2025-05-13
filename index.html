@@ -2,21 +2,21 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Pose ta question à GPT v2 </title>
+  <title>Pose ta question à GPT</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       padding: 40px;
-      max-width: 600px;
+      max-width: 700px;
       margin: auto;
-      background-color: #f9f9f9;
+      background-color: #f0f2f5;
     }
     h1 {
       text-align: center;
       color: #333;
     }
     input[type="text"] {
-      width: 80%;
+      width: 70%;
       padding: 10px;
       font-size: 16px;
       border: 1px solid #ccc;
@@ -39,8 +39,31 @@
       margin-top: 30px;
       background: #fff;
       padding: 20px;
-      border-left: 4px solid #007acc;
+      border: 1px solid #ccc;
+      border-radius: 6px;
       font-size: 18px;
       white-space: pre-wrap;
+      line-height: 1.5;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      border-radius: 4px
+    }
+  </style>
+</head>
+<body>
+  <h1>Pose une question</h1>
+  <div>
+    <input type="text" id="question" placeholder="Ex : Who is Napoleon">
+    <button onclick="ask()">Envoyer</button>
+  </div>
+  <div id="response"></div>
+
+  <script>
+    async function ask() {
+      const question = document.getElementById("question").value;
+      const res = await fetch("https://fmanat.app.n8n.cloud/webhook-test/1a0d539b-ce81-4f8c-bc54-112eeba3f77a?question=" + encodeURIComponent(question));
+      const data = await res.json();
+      const reply = data.reply || data.output || "Pas de réponse.";
+      document.getElementById("response").textContent = reply;
+    }
+  </script>
+</body>
+</html>
