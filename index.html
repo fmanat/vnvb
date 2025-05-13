@@ -3,59 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <title>VNVB IA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Arial, sans-serif;
-      padding: 40px;
-      max-width: 700px;
-      margin: auto;
+      padding: 20px;
+      margin: 0;
       background-color: #f0f2f5;
     }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+    }
+
     .logo {
       display: block;
       margin: 0 auto 20px;
       max-width: 200px;
+      width: 100%;
     }
+
     h1 {
       text-align: center;
       color: #333;
+      font-size: 1.8em;
     }
+
+    .input-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
     input[type="text"] {
-      width: 70%;
+      flex: 1 1 100%;
       padding: 10px;
       font-size: 16px;
       border: 1px solid #ccc;
       border-radius: 4px;
     }
+
     button {
-      padding: 10px 20px;
+      flex: 1 1 100%;
+      padding: 10px;
       font-size: 16px;
-      margin-left: 10px;
       cursor: pointer;
       background-color: #007acc;
       color: white;
       border: none;
       border-radius: 4px;
     }
+
     button:hover {
       background-color: #005fa3;
     }
+
     #response {
       margin-top: 20px;
       background: #fff;
       padding: 20px;
       border: 1px solid #ccc;
       border-radius: 6px;
-      font-size: 18px;
+      font-size: 1rem;
       white-space: pre-wrap;
       line-height: 1.5;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
+
     #status {
       font-style: italic;
       color: #666;
       margin-top: 10px;
+      text-align: center;
     }
+
     #log {
       margin-top: 30px;
       font-size: 14px;
@@ -69,16 +92,18 @@
   </style>
 </head>
 <body>
-  <img src="https://www.vnvb.fr/wp-content/uploads/2021/10/VNVB-logo-rose-2.png" alt="VNVB Logo" class="logo">
-  <h1>Je suis Fabien, ton assistant IA</h1>
-  <div>
-    <input type="text" id="question" placeholder="Ex : Who is Napoleon">
-    <button onclick="ask()">Envoyer</button>
+  <div class="container">
+    <img src="https://www.vnvb.fr/wp-content/uploads/2021/10/VNVB-logo-rose-2.png" alt="VNVB Logo" class="logo">
+    <h1>Je suis Fabien, ton assistant IA</h1>
+    <div class="input-group">
+      <input type="text" id="question" placeholder="Ex : Qui est le président du VNVB ?">
+      <button onclick="ask()">Envoyer</button>
+    </div>
+    <div id="status"></div>
+    <div id="response"></div>
+    <h3>Historique</h3>
+    <div id="log"></div>
   </div>
-  <div id="status"></div>
-  <div id="response"></div>
-  <h3>Historique</h3>
-  <div id="log"></div>
 
   <script>
     async function ask() {
