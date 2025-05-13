@@ -12,7 +12,8 @@
   <script>
     async function ask() {
       const question = document.getElementById("question").value;
-      const res = await fetch("https://fmanat.app.n8n.cloud/webhook-test/1a0d539b-ce81-4f8c-bc54-112eeba3f77a?question=" + encodeURIComponent(question));
+      const url = "https://fmanat.app.n8n.cloud/webhook-test/1a0d539b-ce81-4f8c-bc54-112eeba3f77a?question=" + encodeURIComponent(question);
+      const res = await fetch(url);
       const data = await res.json();
       document.getElementById("response").textContent = data.reply || JSON.stringify(data);
     }
